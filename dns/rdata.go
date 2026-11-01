@@ -277,3 +277,9 @@ func unpackRData(t Type, msg []byte, off, rdlen int) (RData, error) {
 	}
 	return Unknown{t, bytes.Clone(rd)}, nil
 }
+
+// DecodeRData decodes uncompressed RDATA for type t, as found in RFC 3597
+// generic zone-file syntax. Types without a dedicated struct stay Unknown.
+func DecodeRData(t Type, data []byte) (RData, error) {
+	return unpackRData(t, data, 0, len(data))
+}
