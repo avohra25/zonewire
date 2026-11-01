@@ -101,6 +101,7 @@ const (
 	RCodeNameError      RCode = 3 // NXDOMAIN
 	RCodeNotImplemented RCode = 4
 	RCodeRefused        RCode = 5
+	RCodeNotAuth        RCode = 9
 )
 
 func (r RCode) String() string {
@@ -117,6 +118,8 @@ func (r RCode) String() string {
 		return "NOTIMP"
 	case RCodeRefused:
 		return "REFUSED"
+	case RCodeNotAuth:
+		return "NOTAUTH"
 	}
 	return "RCODE" + strconv.Itoa(int(r))
 }
